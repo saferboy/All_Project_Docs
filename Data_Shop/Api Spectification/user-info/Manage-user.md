@@ -5,7 +5,7 @@
 
 ---
 
-> Base URL: `/api/v1/users`
+> Base URL: `/api/v1/user`
 
 > Any routes required `admin` roles
  
