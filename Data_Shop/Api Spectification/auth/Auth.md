@@ -32,8 +32,9 @@
         ],
         "email": "shashvarbek@gmail.com",
         "address": "Xarizma",
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImVtYWlsIjoiM0BnbWFpbC5jb20iLCJh"
-    }
+        "role": "user"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImVtYWlsIjoiM0BnbWFpbC5jb20iLCJh"
 }
 ```
 
@@ -113,7 +114,8 @@ Response
         ],
         "email": "shashvarbek@gmail.com",
         "address": "Xarizma",
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImVtYWlsIjoiM0BnbWFpbC5jb20iLCJh"
-    }
+        "role": "user"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImVtYWlsIjoiM0BnbWFpbC5jb20iLCJh"
 }
 ```
