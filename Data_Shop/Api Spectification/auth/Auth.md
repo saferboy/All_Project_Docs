@@ -96,7 +96,7 @@ Response
 ```json
 {
     "code": "14243",
-    "verificationId": 
+    "verificationId": "aade4420-533c-45bc-8103-cf6632abb342"
 }
 ```
 
