@@ -46,12 +46,7 @@
 
 **GET** `/:id`
 
-**Authorization**: `Token` 
-
-> required ```Admin``` or `Supervisor`,  role 
-
 `Response`
-
 
 ```json
 {
@@ -70,11 +65,7 @@
 
 ---
 
-**GET** `/category`
-
-**Authorization**: `Token` 
-
-> required ```All Users``` 
+**GET** `/category` 
 
 `Response`
 
