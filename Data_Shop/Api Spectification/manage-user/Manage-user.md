@@ -17,7 +17,7 @@
 <br>
 
 
-**GET** `/users`
+**GET** `/users` or `users?page=3&limit=10`
 
 **Authorization**: `Token` 
 

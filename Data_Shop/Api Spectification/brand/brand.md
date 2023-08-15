@@ -66,7 +66,7 @@
 
 ---
 
-**GET** `/` 
+**GET** `/` or `?page=2&limit10`
 
 `Response`
 

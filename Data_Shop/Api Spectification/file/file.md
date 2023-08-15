@@ -30,7 +30,7 @@ formdata: name="files"
 
 ---
 
-**GET**  `/files` 
+**GET**  `/files` or `?page=5&limit=10`
 
 > request header => **Authorization** `Token`
 

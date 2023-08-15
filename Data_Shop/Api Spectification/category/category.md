@@ -65,7 +65,7 @@
 
 ---
 
-**GET** `/category` 
+**GET** `/` or `?page=3&limit=9` 
 
 `Response`
 
