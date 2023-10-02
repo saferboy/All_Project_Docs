@@ -1,0 +1,287 @@
+							Docker Documentation
+
+Docker ni ishlatish uchun Powershall terminalidan foydalaning,
+Docker ni ishlatish paytida docker cli bilan ulanish mavjud bo'lishi kerak
+
+	- Commanda (buyruq): 
+		
+		Docker
+
+ - Managament Commands (boshqaruv buyruqlari) = Docker dagi alohida resurslar bilan ishlash uchun mo'ljallangan
+
+ - Commands = Dockerning oldingi versiydasida ishlatilgan buyruqlar 
+
+-------------------------------------------------------------------
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Common Commands:
+  run         Create and run a new container from an image
+  exec        Execute a command in a running container
+  ps          List containers
+  build       Build an image from a Dockerfile
+  pull        Download an image from a registry
+  push        Upload an image to a registry
+  images      List images
+  login       Log in to a registry
+  logout      Log out from a registry
+  search      Search Docker Hub for images
+  version     Show the Docker version information
+  info        Display system-wide information
+
+Management Commands:
+  builder     Manage builds
+  buildx*     Docker Buildx (Docker Inc., v0.11.2-desktop.1)
+  checkpoint  Manage checkpoints
+  compose*    Docker Compose (Docker Inc., v2.20.2-desktop.1)
+  container   Manage containers
+  context     Manage contexts
+  dev*        Docker Dev Environments (Docker Inc., v0.1.0)
+  extension*  Manages Docker extensions (Docker Inc., v0.2.20)
+  image       Manage images
+  init*       Creates Docker-related starter files for your project (Docker Inc., v0.1.0-beta.6)
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  plugin      Manage plugins
+  sbom*       View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc., 0.6.0)
+  scan*       Docker Scan (Docker Inc., v0.26.0)
+  scout*      Command line tool for Docker Scout (Docker Inc., 0.20.0)
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Swarm Commands:
+  config      Manage Swarm configs
+  node        Manage Swarm nodes
+  secret      Manage Swarm secrets
+  service     Manage Swarm services
+  stack       Manage Swarm stacks
+  swarm       Manage Swarm
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  wait        Block until one or more containers stop, then print their exit codes
+
+Global Options:
+      --config string      Location of client config files (default
+                           "C:\\Users\\Polonkas\\.docker")
+  -c, --context string     Name of the context to use to connect to the
+                           daemon (overrides DOCKER_HOST env var and
+                           default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket to connect to
+  -l, --log-level string   Set the logging level ("debug", "info",
+                           "warn", "error", "fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default
+                           "C:\\Users\\Polonkas\\.docker\\ca.pem")
+      --tlscert string     Path to TLS certificate file (default
+                           "C:\\Users\\Polonkas\\.docker\\cert.pem")
+      --tlskey string      Path to TLS key file (default
+                           "C:\\Users\\Polonkas\\.docker\\key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Run 'docker COMMAND --help' for more information on a command.
+
+---------------------------------------------------------------  
+
+	For example;
+
+ docker container ls
+
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+ishlayotgan containerlar mavjud emas
+----------------------------------------------------------------
+
+Docker Sub Commands (Dockerning quyi buyruqlari)
+
+ docker container ls -a
+	^	  ^   ^
+	^	  ^   shu vaqtgacha ishlagan barcha containerlarni ko'rish uchun qo'shimcha key (kalit) (a = all)
+	^	  containerga tegishli sub command
+	boshqaruv buyrug'i
+---------------------------------------------------------------
+
+docker version
+	
+	-dockerning client va server versiylarini ko'rsatib beradi
+
+Client:
+ Cloud integration: v1.0.35-desktop+001
+ Version:           24.0.5
+ API version:       1.43
+ Go version:        go1.20.6
+ Git commit:        ced0996
+ Built:             Fri Jul 21 20:36:24 2023
+ OS/Arch:           windows/amd64
+ Context:           default
+
+Server: Docker Desktop 4.22.1 (118664)
+ Engine:
+  Version:          24.0.5
+  API version:      1.43 (minimum version 1.12)
+  Go version:       go1.20.6
+  Git commit:       a61e2b4
+  Built:            Fri Jul 21 20:35:45 2023
+  OS/Arch:          linux/amd64
+  Experimental:     false
+  containerd:
+  Version:          1.6.21
+  runc:
+  Version:          1.1.7
+ docker-init:
+  Version:          0.19.0
+---------------------------------------------------------
+Containerni ishga tushirish
+
+docker container run -it alpine sh => terminal turi 
+		     ^	 ^  ^
+		     ^	 ^  linux operatsion tizimining image si hisoblanadi
+		     ^	 run funksiyasiga parametr sifatida image nomi beriladi
+		     ishga tushurilgan image terminalida ishlay olish uchun qo'shimcha command
+
+-------------------------------------------------------
+
+Container ichida =>
+
+ / # ls
+
+bin    dev    etc    home   lib    media  mnt    opt    proc   root   run    sbin   srv    sys    tmp    usr    var
+
+^= alpine linux i ichidagi fayl tizimi
+------------------------------------------------------
+
+cat /etc/os-release  => image haqida  ma'lumot
+
+NAME="Alpine Linux"
+ID=alpine
+VERSION_ID=3.18.3
+PRETTY_NAME="Alpine Linux v3.18"
+HOME_URL="https://alpinelinux.org/"
+BUG_REPORT_URL="https://gitlab.alpinelinux.org/alpine/aports/-/issues"
+------------------------------------------------------
+
+Image terminalidan chiqish =>
+
+- exit
+------------------------------------------------------
+
+container dan chiqb ketilsa uning ishlashi ham to'xtatiladi
+
+for-example;
+
+docker container ls -a
+CONTAINER ID   IMAGE     COMMAND     CREATED          STATUS                       PORTS     NAMES
+ae3dbe428fec   alpine    "sh"        8 minutes ago    Exited (0) 30 seconds ago              ecstatic_mclean
+b32f331e6a25   alpine    "/bin/sh"   10 minutes ago   Exited (130) 6 minutes ago             keen_northcutt
+bcabb85c8332   alpine    "/bin/sh"   15 minutes ago   Exited (0) 13 minutes ago              epic_shaw
+^		^	 ^	     ^		      ^					     ^
+^		^	 ^	     ^		      hozirgi holati	                     container nomi
+^		^	 ^	     container yaratilgan vaqt
+^		^	 terminal turi
+^		containerning qaysi image asosida ishga tushirilgani(image nomi)
+container IDsi|
+-----------------------------------------------------------
+
+containerga ishga tishirish paytida nom berish mumkin, agar berilmasa docker unga random nom tanlaydi
+
+Containerni ishga tushirish uchun;
+
+docker container start epic_shaw
+epic_shaw
+----------------------------------------------------------
+
+container ga ulaninsh uchun;
+
+docker container attach epic_shaw
+/ # 
+--------------------------------------------------------
+
+Containerni to'xtatishni 2 xil usuli bor
+
+1. Graceful - (nafis) default, to'g'rilikcha yo'l bilan to'xtatish,
+
+		docker continer stop epic_show
+
+2. Kill qilish, shu zahoti o'chirib tashlash
+		
+		docker container kill epic_show
+--------------------------------------------------------
+
+Ishlatilmaydigan eski containerni xotiradan o'chirib tashlash;
+
+docker container rm epic_shaw
+
+
+Birdaniga barcha to'xtab turgan containerlarni o'chirib tashlash;
+
+docker container prune
+res=>
+Are you sure you want to continue? [y/N]
+Deleted Containers:
+96efc1fae0f7e4b7d715e5099e29bd97d14f90f8b3b6b5ee2c823ba5fa71457e
+ae3dbe428fec7aae9c7840d83279cdc6a1ebb96404be3cc7a1871ad79b3dc439
+-----------------------------------------------------------------
+
+	Containerni to'xtatishimiz bilan xotiradan o'chib ketishi uchun;
+
+docker container run --rm -it alpine sh 
+-----------------------------------------------------------------
+
+Containerni to'xtatmasdan, containerdan chiqib ketish
+
+ctrl + p + q
+---------------------------------------------------
+
+Containerni ishga tushirish paytida unga nom berish;
+
+docker container run --rm -it --name saferboy alpine sh
+
+--------------------------------------------------------------
+
+Containerni detouch usulida ishga tushurish; ya'ni containerni backroundda ishga tushirish, container ishga tushadi lekin ichiga kirilmaydi
+
+
+docker container run --rm -itd --name=saferboy alpine sh 
+
+
+
+
+
+
+
+
+Image va Container orasidagi farq
+
+Image = bu dasturning fayllari
+
+Container = image ning ishlab turgan holati, yani ishga tushirilgan image bu Container

@@ -1,0 +1,25 @@
+			Docker Image'ni Docker Hub'ga joylash
+
+1. docker hubga kiriladi
+
+	terminalda ;
+
+	docker login
+	Username;
+	password
+
+--------------------------------------------------
+
+2. Oldin mavjud Image ni boshqa nom bilan tag qilish kerak
+
+	docker image tag imageName:ImageTag dockerhubUsername/newNameForImage:tag
+	
+for example;
+
+	docker image tag redis:latest hohnDoe/myredis:1.1.1
+
+----------------------------------------------------------------------------
+
+ 3. Image push qilish
+
+	docker image push repostoryName/imagename:tag

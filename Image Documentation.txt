@@ -1,0 +1,110 @@
+			Image Commands
+
+1.	docker image ls = image lar ro'yhatini ko'rish
+------------------------------------------------------
+
+	Image local repostorydan izlanadi agar bo'lmasa, Docker hub dan avtomatik yuklab olinadi,
+
+2. 	docker image run hello-world	(hello-world = image nomi)
+
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+719385e32844: Already exists
+Digest: sha256:dcba6daec718f547568c562956fa47e1b03673dd010fe6ee58ca806767031d1c
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/	
+
+---------------------------------------------------------
+
+3.	Image default usulda yuklab olish;
+
+	docker image pull hello-world:latest
+			  ^           ^    
+			  ^	      tag berish mumkin, agar berilmasa default docker tomonidan latest tagi beriladi
+			  image nomi
+
+----------------------------------------------------------
+
+4.	Imageni local repostorydan o'chirish uchun uning nomi yoki ID si berilishi kerak;
+
+	docker image rm hello-world:latest
+
+Error response from daemon: conflict: unable to remove repository reference "hello-world:latest" (must force) - container bbdb9132bcb5 is using its referenced image 9c7a54a9a43c
+
+	Agar image container bo'lib ishlayotgan bo'lsa,  uni o'chirib bo'lmaydi;
+
+	Uni o'chirishni 2 xil usuli bor; 
+
+1. Oldin containerni o'chirib tashlab, keyin image o'chirish
+
+2. docker image rm -f hello-world:latest
+
+	-f yoki --force = bu comanda agar image ishlayotgan bo'lsa ham uni o'chirib tashlaydi
+
+Ishlatilmaydigan barcha image larni o'chirib tashlash uchun
+
+	docker image prune
+----------------------------------------------------------
+
+5.	Imagelar kompyuterda qancha joy egallab turganini ko'rish uchun;
+
+	docker system df
+
+	docker image df [OPTIONS] REPOSITORY[:TAG]
+
+	docker image df (image name)
+
+---------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

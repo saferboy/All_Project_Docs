@@ -1,0 +1,376 @@
+                          Server settings deploy
+
+
+
+1. Open Terminal; required only gitbash terminal, does not work on other terminals
+
+
+	- ssh <server-user@server-domen> : for example; 
+			ssh root@test.uz
+				
+------------------------------------------------------	
+	
+	- password: you don't see it
+			password: %87dw87dsad7h8sd7g
+-----------------------------------------------------
+	then; for axample
+
+Linux nliuusupor 5.10.0-23-cloud-amd64 #1 SMP Debian 5.10.179-2 (2023-07-14) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Tue Aug  8 17:23:54 2023 from 185.213.229.54
+root@nliuusupor:~#
+		
+	if these entries appear in the terminal, everything is OK!
+
+----------------------------------------------------
+
+	~ = this home folder
+	
+	- write "ls"
+-cli  dump.rdb  node_modules  yarn.lock
+----------------------------------------------------
+
+	cd ../ 
+		- cd ../ through which we exit the folder 1 time
+---------------------------------------------------
+/#  - this root folder
+
+	ls
+apps  boot  etc   lib    lib64   lost+found  mnt  proc  run   srv  tmp  var
+bin   dev   home  lib32  libx32  media       opt  root  sbin  sys  usr
+--------------------------------------------------
+			either create a new folder or work in the "home" folder
+--------------------------------------------------
+
+cd /apps/
+	- enter the folder
+--------------------------------------------------
+ls
+	For_Example   fake-api  lms  todos-api
+--------------------------------------------------
+
+pm2 module - helps to see and work on the processes running on the server, it is similar to nodemon, the difference is that it does not keep the server busy or block
+--------------------------------------------------
+pm2 list
+┌────┬─────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬─┐
+│ id │ name        │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching 
+├────┼─────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼─┤
+│ 1  │ forExample │ default     │ N/A     │ fork    │ 400126   │ 40h    │ 1    │ online    │ 0%       │ 76.5mb   │ root  disabled    │
+│ 0  │ server      │ default     │ 1.0.0   │ fork    │ 0        │ 0      │ 15   │ stopped   │ 0%       │ 0b       │ root     │ disabled 
+└────┴─────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴─┘
+
+-------------------------------------------------
+stop the server!
+
+pm2 stop For_example
+
+[PM2] Applying action stopProcessId on app [For_example](ids: [ 1 ])
+[PM2] [datashop](1) ✓
+
+┌────┬─────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬─┐
+│ id │ name        │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching 
+├────┼─────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼─┤
+│ 1  │ forExample  │ default     │ N/A     │ fork    │ 400126   │ 40h    │ 1    │ stopped    │ 0%       │ 76.5mb   │ root  disabled    │
+│ 0  │ server      │ default     │ 1.0.0   │ fork    │ 0        │ 0      │ 15   │ stopped   │ 0%       │ 0b       │ root     │ disabled 
+└────┴─────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴─┘
+
+-------------------------------------------------
+next delete the folder;
+rm -r For_Example/
+	- delete folder
+------------------------------------------------
+Delete folder from pm2 list
+
+pm2 delete forExample
+
+
+┌────┬───────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬─┐
+│ id │ name      │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼─┤
+│ 0  │ server    │ default     │ 1.0.0   │ fork    │ 0        │ 0      │ 15   │ stopped   │ 0%       │ 0b       │ root     │ disabled │
+└────┴───────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴─┘
+
+---------------------------------------------------------------------
+
+	-Pulling a new project from github
+
+git clone https://github.com/github_profil/repostrory_name.git
+
+Cloning into 'repostrory_name'...
+remote: Enumerating objects: 746, done.
+remote: Counting objects: 100% (746/746), done.
+remote: Compressing objects: 100% (493/493), done.
+remote: Total 746 (delta 406), reused 568 (delta 229), pack-reused 0
+Receiving objects: 100% (746/746), 195.84 KiB | 1.17 MiB/s, done.
+Resolving deltas: 100% (406/406), done.
+---------------------------------------------------------------
+
+	- Let's check the folders
+ls
+
+For_Example  fakenote-api  lms  todos-api
+
+-------------------------------------------------------
+
+
+	- Enter the folder
+
+cd For_Example/
+
+ package.json   package-lock.json   prisma   readme   src   tsconfig.json
+----------------------------------------------------------
+
+	- Create new file
+
+touch .env
+----------------------------------------------------------
+	- We see a list of folders
+
+ls
+
+package.json   package-lock.json   prisma   readme   src   tsconfig.json
+
+There is no .env file 
+
+because the folders or files preceded by a dot are not visible on Linux
+-------------------------------------------------------
+
+	- to view hidden files
+
+ls -a
+
+    .git      .gitignore     package-lock.json   readme   tsconfig.json
+    .env   .github   package.json   prisma              src
+------------------------------------------------------
+	- There are standard editors in the terminal; these are; nano, vim, emacs
+
+	- we use nano because it is easy to use and very simple
+
+	- Let's configure the env file
+
+nano .env
+
+DATABASE_URL="postgresql://postgres:1@localhost:5432/data_shop?schema=public"
+
+JWT_SECRET=jwt-secret
+EXPIRES_IN=3000h
+PORT=9060
+JWT_ENGINE=local
+ATTACHMENTS_PATH=./files/attachments
+TEMPS_PATH=./files/temps
+
+VERIFICATION_TIMEOUT=3000
+SECRET_KEY="san skjfnsdkjfs"
+
+EMAIL="test@gmail.com"
+EMAIL_PASSWORD="luepoegafwuqicis"
+
+--------------------------------------------------------
+
+
+	- Create new user for database control
+
+create user john with password '1234' superuser;
+
+CREATE ROLE
+
+psql -U "username"
+
+Password for user "1234":
+psql (13.11 (Debian 13.11-0+deb11u1))
+Type "help" for help.
+
+"username"=#
+--------------------------------------------------------
+
+create database blabla;
+
+if you want delete database;
+
+drop database blabla;
+DROP DATABASE
+
+create database blabla;
+CREATE DATABASE
+------------------------------------------------
+
+exit postgres 
+
+\q
+-----------------------------------------
+
+
+	- We will create a new folder to upload images
+
+mkdir upload
+
+---------------------------------------------
+
+	- Install moduls
+
+npm install
+
+added 281 packages, and audited 282 packages in 6s
+
+25 packages are looking for funding
+  run `npm fund` for details
+
+2 moderate severity vulnerabilities
+
+Some issues need review, and may require choosing
+a different dependency.
+------------------------------------------
+
+	- Next create database tables
+
+npx prisma db push
+
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": PostgreSQL database "data_shop", schema "public" at "localhost:5432"
+
+🚀  Your database is now in sync with your Prisma schema. Done in 116ms
+
+✔ Generated Prisma Client (4.16.2 | library) to ./node_modules/@prisma/client in 336ms
+------------------------------------------------
+
+Next we compile typescript to javascript
+
+For this, the package.json file must contain a build script
+
+npm run build
+
+npm start
+------------------------------
+
+the server should work without blocking even after we close the terminal, we use pm2 for this
+
+pm2 start -name 'project_name' npm  -- start
+
+[PM2] Starting /usr/bin/npm in fork_mode (1 instance)
+[PM2] Done.
++--- -a
+namespace : default
+version : N/A
+pid : 461362
+pm2 id : 0
+status : online
+mode : fork
+restarted : 0
+uptime : 0s
+memory usage : 16.1mb
+error log : /apps/Data_Shop/datashop
+watching : no
+PID file : /root/.pm2/pids/-a-0.pid
+
+----------------------------------
+
+pm2 list
+
+
+┌────┬───────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬─┐
+│ id │ name      │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status     │ cpu      │ mem      │ user     │ watching │
+├────┼───────────┼─────────────┼──────────┼───────────┼──────────┼────────┼───┼─┤
+│ 0  │ -a    │ default     │ 1.0.0  	  │ fork    │ 0          │ 0              │ 15   │ stopped   │ 0%       │ 0b       │ root     │ disabled │
+└────┴───────────┴─────────────┴───────────┴─────────┴──────────┴────────┴────┴─┘
+---------------------------------------------
+
+pm2 show 0
+
+	- "0 = id"
+
+ Describing process with id 0 - name -a
+┌───────────────────┬────────────────────────────┐
+│ status            │ online                     │
+│ name              │ -a                         │
+│ namespace         │ default                    │
+│ version           │ N/A                        │
+│ restarts          │ 0                          │
+│ uptime            │ 27s                        │
+│ script path       │ /usr/bin/npm               │
+│ script args       │ start                      │
+│ error log path    │ /apps/Data_Shop/datashop   │
+│ out log path      │ /root/.pm2/logs/-a-out.log │
+│ pid path          │ /root/.pm2/pids/-a-0.pid   │
+│ interpreter       │ node                       │
+│ interpreter args  │ N/A                        │
+│ script id         │ 0                          │
+│ exec cwd          │ /apps/Data_Shop            │
+│ exec mode         │ fork_mode                  │
+│ node.js version   │ 18.16.1                    │
+│ node env          │ N/A                        │
+│ watch & reload    │ ✘                          │
+│ unstable restarts │ 0                          │
+│ created at        │ 2023-08-11T08:21:56.641Z   │
+└───────────────────┴────────────────────────────┘
+ Actions available
+┌────────────────────────┐
+│ km:heapdump            │
+│ km:cpu:profiling:start │
+│ km:cpu:profiling:stop  │
+│ km:heap:sampling:start │
+│ km:heap:sampling:stop  │
+└────────────────────────┘
+ Trigger via: pm2 trigger -a <action_name>
+
+ Code metrics value
+┌────────────────────────┬───────────┐
+│ Used Heap Size         │ 16.57 MiB │
+│ Heap Usage             │ 85.65 %   │
+│ Heap Size              │ 19.35 MiB │
+│ Event Loop Latency p95 │ 0.92 ms   │
+│ Event Loop Latency     │ 0.23 ms   │
+│ Active handles         │ 5         │
+│ Active requests        │ 0         │
+└────────────────────────┴───────────┘
+ Divergent env variables from local env
+
+------------------------------------------------
+
+	- Rename server
+
+pm2 restart 0 --name safer
+
+-----------------------------------
+
+	- show nginx work
+
+nginx 
+
+systemctl status nginx
+ 
+
+
+
+
+								COMMANDS!
+
+~ = home folder 
+
+/# = root folder
+
+pm2 module - project manager 2 - this module helps to work with the processes running on the server
+
+pm2 stop "server name"
+
+
+
+1. clear - tozalash(tozalash jarayoni serverga aloqasi yo'q)
+
+2. ls =  this command outputs a list of folders
+
+3. cd ../  = through which we exit the folder 1 time
+
+4. rm = delete folder
+
+5. rm -r = ...and deletes the folder and everything inside it
+
+6. touch = for create new file
+
+7. mkdir = for create new folder

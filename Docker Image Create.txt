@@ -1,0 +1,38 @@
+				DockerFile yordamida Docker Image qurish
+
+	shu papka ichida index1.html fayl yaratilishi kerak
+-----------------------------------
+				Dockerfile
+	#Docker  file
+
+	FROM debian:buster-slim
+
+	RUN apt-get update
+	RUN apt-get install -y nginx
+
+	COPY ./index1.html /var/www/html
+
+	#shell form
+	CMD nginx -g 'daemon off;'
+
+	#exac form, this recommended form  
+	# CMD ["nginx", "-g", "daemon off"]
+
+--------------------------------------------------------
+
+	docker image build -t mynginx:v1.0.0 . 
+
+	docker image build - bu komanda docker ga yangi image yaratishni buyuradi.
+	
+	-t mynginx:v1.0 - bu komanda orqali image'ga yangi nom va tag berish mumkin
+
+	'.' - docker'ga image yaratish kerak bo'lgan papkani belgilaydi, Dockerfile bilan bir papkada bo'lishi kerak
+----------------------------------------------------------------------------------
+
+	Container default 80-portda ishlaydi uing ichidagi portni local kompyuerdagi portga mapping qilish;
+
+	docker container run -itd -p 80:80 mynginx:v1.0.0
+				  ^	   ^
+				  ^	   image nomi va tag nomi
+				  ^
+			          portni mapping qilish uchun

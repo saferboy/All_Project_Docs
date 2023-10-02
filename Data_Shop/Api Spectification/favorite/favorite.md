@@ -2,6 +2,9 @@
 
 ## Required Options
 
+> ## Role
+> `user`, `admin`, `supervisor`
+
 > ## Base URL
 > ### `/api/v1/favorite`
 

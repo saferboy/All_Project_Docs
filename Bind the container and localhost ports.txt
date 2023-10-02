@@ -1,0 +1,106 @@
+			Container va localhost portlarini bog'lash
+
+1.	docker container run -d nginx
+
+Containerni detouch usulida ishga tushiramiz va containerlar ro'yhatini ko'ramiz.
+
+	docker container ls
+
+CONTAINER ID   IMAGE     COMMAND                  CREATED             STATUS             PORTS                  NAMES
+9ac3f734435c   nginx     "/docker-entrypoint.…"   7 seconds ago       Up 6 seconds       80/tcp                 distracted_proskuriakova
+2eea293c6eec   nginx     "/docker-entrypoint.…"   About an hour ago   Up About an hour   127.0.0.1:82->80/tcp   zen_hermann
+b2d0a00b082c   nginx     "/docker-entrypoint.…"   About an hour ago   Up About an hour   0.0.0.0:81->80/tcp     distracted_chaplygin
+2aadd0c5c05d   nginx     "/docker-entrypoint.…"   About an hour ago   Up About an hour   80/tcp                 nostalgic_knuth
+
+agar portga local port berilsama u faqat container ichida ochiq bo'ladi va unga tashqaridan ulana olmaymiz. for example =  80/tcp 
+
+-----------------------------------------------------------------
+
+2. Port berish uchun 
+
+	docker container run -d -p 80:80 nginx
+                                 ^  ^  ^= container ishlayotgan default port
+                                 ^  local kompyuterdagi local port
+				 ^			
+			         containerga port berishimiz uchun
+
+Agar local port avval ishlatilgan ya'ni band bo'lsa xohlagan bo'sh port ni berishim mumkin
+
+---------------------------------------------------------------------------------------------
+
+
+3. 	0.0.0.0:81->80/tcp => ushbu 4 ta nol local kompyuterdagi barcha IP manzillarni ifodalaydi,
+
+	agar biz port mapping qilayotganda IP maznilni ko'rsatmasak, mapping local kompyuterdagi barcha portlarga qo'yiladi
+
+Aniq IP manzilga port mapping qilish uchun
+
+	docker container run-d -p 127.0.0.1:80:80 nginx
+				   ^
+			           komyuterdagi IP manzil
+
+--------------------------------------------------------------------------------------------
+
+4. Bazida bitta containerda 1-2 ta port ishlayotgan bo'lishi mumkin; 
+
+masalan; bitta port: http
+	 boshqa port: https
+
+Bir vaqtning o'zida bir qancha portlarni mapping qilish uchun
+
+	docker container run -d -p 83:80 -p 333:333 nginx
+                                   ^  ^      ^   ^            
+	                           ^  ^      ^   conatinerdagi port
+                                   ^  ^      local port  
+                                   ^  containerdagi port
+                                   local port                      
+     
+bir nechta port'larni mapping qilish (-p) kaliti bilan ketma-ket amalga oshiriladi                        
+                                                      
+------------------------------------------------------------------------------------------------
+
+5. 	Agar port'lar juda ko'p bo'lsa m-n 200 ta port'ni map qilish kerak bo'lsa,
+
+	docker container run -d -p 3000-32000:3000-3200 nginx
+				   ^        ^ ^       ^   
+			            \      /   \     /
+				     \    /     \   /
+				      \  /	containerdagi
+                                       \/        port'lar
+				     local 
+				   kompyuterdagi 
+				3000 dan 3200 gacha 
+				bo'lhan barcha portlar
+
+
+bunda ketma-ket ko'rsatilgan local port'lar container'dagi port'larga mapping qilinadi
+
+----------------------------------------------------------------------------
+
+qaysi image'ning containeri qaysi port'da ishlayganini bilish uchun uning Dockerfile ga kiriladi
+
+EXPOSE PORT
+
+expose buyruqi bilan berilganda image ushbu port ni eshitayotgani bildiriladi
+
+---------------------------------------------------------------------
+
+dockerfile commands
+
+https://docs.docker.com/engine/reference/builder/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
